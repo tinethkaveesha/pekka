@@ -1,0 +1,348 @@
+@import url('https://fonts.cdnfonts.com/css/devil-breeze');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+@import url('https://fonts.cdnfonts.com/css/bimbo');
+
+:root {
+    --pekka: #1A237E; /* Pekka dark royal blue */
+    --pekka-contrast: #eef8ce; /* light contrast for text */
+    --pekka-accent: #273877; /* complementary accent */
+	/* Pekka dark royal-blue palette */
+	--pekka-blue: #0b3d91;
+	--pekka-blue-dark: #062744;
+	--pekka-accent: #6b8ce3;
+	--text-light: #ffffff;
+	--muted: rgba(255,255,255,0.8);
+	--glass: rgba(255,255,255,0.04);
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #1B1B1B;
+    color: #eef8ce;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background-image:
+    url(img/bg.png),
+    repeating-linear-gradient(
+        to right, transparent 0 500px, #1A237E33 500px 501px
+    );
+    background-size: 100%;
+	/* Background gradient inspired by dark royal blue */
+	background: linear-gradient(180deg, var(--pekka-blue-dark) 0%, #081730 60%, #040814 100%);
+	color: var(--text-light);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Header */
+header {
+	background: linear-gradient(90deg, rgba(11,61,145,0.95), rgba(6,39,68,0.95));
+	color: var(--text-light);
+	padding: 14px 0;
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	box-shadow: 0 2px 8px rgba(4,8,20,0.6);
+}
+header .logo {
+	color: var(--pekka-accent);
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+.section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-fit {
+    width: min(1200px, 90vw);
+    margin: auto;
+    min-height: 100vh;
+    position: relative;
+    padding-block: 10em;
+}
+header {
+    padding-block: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10px;
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    background-color: #1B1B1B11;
+    background-image: repeating-linear-gradient(
+        to right, transparent 0 500px, #eee1 500px 501px
+    );
+}
+header .content-fit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: unset!important;
+    padding-block: unset!important;
+}
+header .content-fit nav ul{
+    display: flex;
+    gap: 2em;
+}
+
+#banner .title {
+    color: var(--pekka);
+    font-size: 11em;
+    font-family: "devil breeze";
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+} 
+#banner .title::before {
+    content: attr(data-before);
+    position: absolute;
+    top: 0.5em;
+    inset: 0.66em 0 0 0;
+    z-index: -1;
+    color: var(--pekka-accent);
+} 
+.section .decorate {
+    position: absolute;
+}
+#intro .content-fit {
+    display: flex;
+    gap: 30%;
+    justify-content: space-between;
+    align-items: center;
+}
+.section .number {
+    font-family: "devil breeze";
+    font-size: 15em;
+    font-weight: bold;
+}
+.section .content-fit .title {
+    font-family: "devil breeze";
+    font-size: 5em;
+    font-weight: bold;
+}
+#description .content-fit {
+    padding-right: 30%;
+}
+#description .number {
+    font-size: 5em;
+}
+#description .title {
+    font-size: 7em;
+    font-weight: 500;
+}
+#contact .content-fit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+#contact table {
+    width: min(800px, 90vw);
+    padding-top: 2em;
+    font-size: 2em;
+    margin: auto;
+}
+#contact table td {
+    padding-block: 0.5em;
+    border-bottom: 1px dashed #1A237E66;
+}
+#contact table td:nth-child(1) {
+    text-align: left;
+    font-weight: 500;
+}
+#contact table td:nth-child(2) {
+    text-align: right;
+    font-weight: 200;
+}
+#contact .sign {
+    font-family: 'Bimbo', sans-serif;
+    font-size: 10em;
+}
+
+/* Decorative images subtle blue glow */
+.decorate {
+	filter: drop-shadow(0 24px 48px rgba(11,61,145,0.45));
+}
+
+/* Number blocks */
+.number {
+	color: var(--pekka-accent);
+	font-size: 40px;
+	font-weight: 800;
+	opacity: 0.95;
+}
+
+/* Content descriptions */
+.des {
+	color: var(--muted);
+}
+.des p {
+	line-height: 1.6;
+}
+
+/* Tables and contact info */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	color: var(--text-light);
+}
+table td {
+	padding: 8px 6px;
+	border-bottom: 1px dashed rgba(255,255,255,0.03);
+}
+table td:first-child {
+	opacity: 0.85;
+	color: var(--pekka-accent);
+}
+
+/* Sign */
+.sign {
+	margin-top: 18px;
+	font-weight: 900;
+	letter-spacing: 3px;
+	color: var(--pekka-accent);
+	font-size: 22px;
+}
+
+#container3D {
+    position: fixed;
+    inset: 0;
+    /* background-color: red; */
+    z-index: 100;
+    pointer-events: none;
+}
+@media screen and (max-width: 1023px){
+    #banner .title {
+        font-size: 5em;
+    }
+    #intro .content-fit {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 767px){
+    #banner .title {
+        font-size: 3em;
+    }
+    #intro .content-fit {
+        flex-direction: column;
+    }
+    .section .number {
+        font-size: 5em;
+    }
+    .section .content-fit .title {
+        font-size: 2em;
+    }
+    #description .content-fit {
+        padding-right: 0;
+    }
+    #contact table {
+        font-size: 1em;
+    }
+    #contact .sign {
+        font-size: 2em;
+    }
+    #container3D {
+        position: absolute;
+    }
+}
+
+/* Small responsive niceties */
+@media (max-width: 800px) {
+	nav ul { gap: 12px; }
+	.title[data-before]::before { left: -4vw; font-size: 12px; }
+	.decorate { width: 30vw !important; }
+}
+
+/* Login modal styles */
+.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 1000; }
+.modal.is-open { display: flex; }
+.modal__overlay { position: absolute; inset: 0; background: rgba(2,8,23,0.6); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal__panel { position: relative; background: linear-gradient(180deg, var(--pekka-blue), var(--pekka-blue-dark)); color: var(--text-light); padding: 28px; width: 100%; max-width: 480px; border-radius: 12px; box-shadow: 0 10px 40px rgba(2,8,23,0.6); border: 1px solid rgba(255,255,255,0.06); }
+.modal__close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--muted); font-size: 24px; cursor: pointer; }
+.modal h2 { margin: 0 0 14px 0; color: var(--text-light); }
+.modal label { display: block; margin-bottom: 12px; color: var(--muted); font-size: 14px; }
+.modal input[type="text"], .modal input[type="email"], .modal input[type="password"] {
+	width: 100%;
+	padding: 10px 12px;
+	border-radius: 8px;
+	border: 1px solid rgba(255,255,255,0.06);
+	background: rgba(255,255,255,0.03);
+	color: var(--text-light);
+	outline: none;
+	transition: box-shadow .15s;
+}
+.modal input::placeholder {
+	color: rgba(255,255,255,0.5);
+}
+.modal input:focus {
+	box-shadow: 0 6px 18px rgba(11,61,145,0.16);
+	border-color: var(--pekka-accent);
+}
+.modal__actions { display: flex; gap: 12px; margin-top: 10px; justify-content: flex-end; }
+.btn { padding: 8px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: transparent; color: var(--text-light); cursor: pointer; }
+.btn.primary { background: var(--pekka-accent); color: #051633; border: none; font-weight: 700; }
+@media (max-width: 420px) { .modal__panel { padding: 18px; } }
+
+/* signup/login form helpers */
+.hidden { display: none; }
+.modal__form { margin-top: 6px; }
+.modal__switch { margin-top: 12px; color: var(--muted); font-size: 13px; }
+.btn-link { background: transparent; border: none; color: var(--pekka-accent); cursor: pointer; padding: 0; font-weight: 700; }
+.form-message { min-height: 22px; margin-bottom: 8px; font-weight: 600; }
+
+/* Signup-mode styles */
+.modal.is-signup .modal__panel {
+	border-color: rgba(107,140,227,0.18);
+	box-shadow: 0 14px 40px rgba(107,140,227,0.10);
+}
+.modal.is-signup h2 {
+	color: var(--pekka-accent);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.modal.is-signup .btn.primary {
+	background: linear-gradient(90deg, var(--pekka-accent), rgba(107,140,227,0.9));
+	color: #04102a;
+}
+
+/* Logo styling */
+.logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	text-decoration: none;
+	color: inherit;
+}
+.logo__img {
+	display: block;
+	width: 2.25rem; /* 36px */
+	height: 2.25rem;
+	object-fit: contain;
+}
+.logo__text {
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+/* optional: hide text on small screens to save space */
+@media (max-width: 540px) {
+	.logo__text {
+		display: none;
+	}
+}

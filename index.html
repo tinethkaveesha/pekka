@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#0b3d91">
+	<title>P.E.K.K.A.</title>
+	<link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./pekka1.png">
+</head>
+
+<body class="pekka">
+	<header>
+		<div class="content-fit">
+			<a href="#banner" class="logo" aria-label="Team P.E.K.K.A. home">
+				<img src="./pekka2.png" alt="Team P.E.K.K.A. logo" class="logo__img" width="48" height="48">
+				<span class="logo__text">Team P.E.K.K.A.</span>
+			</a>
+			<nav>
+				<ul>
+					<li role="button" tabindex="0" data-action="contacts">Contacts</li>
+					<li role="button" tabindex="0" data-action="category">Category</li>
+					<li role="button" tabindex="0" data-action="login">Login</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="section" id="banner">
+		<div class="content-fit">
+			<div class="title" data-before="TEAM">Welcome to P.E.K.K.A.</div>
+		</div>
+		<img src="./pekka1.png" class="decorate" alt="" style="width: 20vw; bottom: 0; right: 0;">
+		<img src="./pekka2.png" class="decorate" alt="" style="width: 40vw; bottom: 0; left: 0;">
+	</div>
+	<div class="section" id="intro">
+		<div class="content-fit">
+			<div class="number">01</div>
+			<div class="des">
+				<div class="title">INTRODUCTION To P.E.K.K.A.</div>
+				<p>We chose the name P.E.K.K.A., inspired by the legendary warrior from Clash of Clans,
+                    to represent our team in this developers’ competition. In the game, P.E.K.K.A. is 
+                    known as one of the strongest and most resilient warriors, admired for its immense
+                    power, precision, and unwavering determination on the battlefield.
+                    P.E.K.K.A. symbolizes strength through intelligence, not just brute force. Despite
+                    its heavy armor, it strikes with calculated accuracy much like how effective software
+                    solutions are built through thoughtful design, strong logic, and teamwork. This 
+                    perfectly aligns with our approach to development: building robust, reliable, and 
+                    high-impact solutions while maintaining attention to detail.
+                    By naming our team P.E.K.K.A., we reflect our commitment to powerful problem-solving,
+                    resilience under pressure, and unity as a team. Just as P.E.K.K.A. stands firm against
+                    the toughest challenges, we aim to tackle complex problems with confidence, creativity,
+                    and technical excellence.</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="description">
+		<div class="content-fit">
+			<div class="number">02</div>
+			<div class="des">
+				<div class="title">PEKKA</div>
+                <p>Our team specializes in designing and developing modern, responsive, and high-performance web applications that combine functionality with an excellent user experience. We build solutions that are scalable, secure, and optimized for real-world use.</p>
+                <p>We are skilled in creating:</p>
+                <p>- Responsive websites that work seamlessly across desktops, tablets, and mobile devices</p>
+                <p>- Frontend interfaces using clean UI/UX principles for intuitive and engaging user interactions</p>
+                <p>- Backend systems that handle data efficiently, ensure security, and support scalability</p>
+                <p>- Full-stack web applications, integrating frontend, backend, and databases into a cohesive system</p>
+                <p>- Performance-optimized and SEO-friendly websites for faster load times and better visibility</p>
+                <p>Our development approach focuses on clean code, modern technologies, collaboration, and problem-solving. We aim to transform ideas into reliable digital products that deliver value, adapt to user needs, and perform consistently under pressure, team P.E.K.K.A.</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="contact">
+		<div class="content-fit">
+			<div class="number">03</div>
+			<div class="des">
+				<div class="title">CONTACT</div>
+				<table>
+					<tr>
+						<td>Email</td>
+						<td>teamispekka@gmail.com</td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td>+94 76 752 4003</td>
+					</tr>
+					<tr>
+						<td>Website</td>
+						<td>pekka.github.io</td>
+					</tr>
+					<tr>
+						<td>Youtube</td>
+						<td>@PEKKA</td>
+					</tr>
+				</table>
+				<div class="sign">P.E.K.K.A.</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Login modal (modified: adds signup form and message area) -->
+	<div class="modal" id="loginModal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
+		<div class="modal__overlay" data-close>
+			<div class="modal__panel" role="document" aria-describedby="loginDesc" onclick="event.stopPropagation()">
+				<button class="modal__close" data-close aria-label="Close login dialog">&times;</button>
+				<h2 id="loginTitle">Login</h2>
+
+				<!-- message area -->
+				<div class="form-message" id="modalMessage" aria-live="polite"></div>
+
+				<!-- login form -->
+				<form id="loginForm" class="modal__form">
+					<label>
+						Username
+						<input type="text" name="username" required>
+					</label>
+					<label>
+						Password
+						<input type="password" name="password" required>
+					</label>
+					<div class="modal__actions">
+						<button type="submit" class="btn primary">Sign in</button>
+						<button type="button" class="btn" data-close>Cancel</button>
+					</div>
+					<p class="modal__switch">Don't have an account? <button type="button" id="showSignup" class="btn-link">Sign up</button></p>
+				</form>
+
+				<!-- signup form (hidden by default) -->
+				<form id="signupForm" class="modal__form hidden" novalidate>
+					<label>
+						Username
+						<input type="text" name="username" required>
+					</label>
+					<label>
+						Password
+						<input type="password" name="password" required>
+					</label>
+					<label>
+						Confirm password
+						<input type="password" name="password2" required>
+					</label>
+					<div class="modal__actions">
+						<button type="submit" class="btn primary">Create account</button>
+						<button type="button" class="btn" data-close>Cancel</button>
+					</div>
+					<p class="modal__switch">Already have an account? <button type="button" id="showLogin" class="btn-link">Sign in</button></p>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			const items = document.querySelectorAll('nav li[role="button"]');
+			const modal = document.getElementById('loginModal');
+			const loginForm = document.getElementById('loginForm');
+			const signupForm = document.getElementById('signupForm');
+			const showSignup = document.getElementById('showSignup');
+			const showLogin = document.getElementById('showLogin');
+			const message = document.getElementById('modalMessage');
+			let lastFocused = null;
+			const focusableSelectors = 'a[href], area, input, select, textarea, button, [tabindex]:not([tabindex="-1"])';
+
+			function openModal() {
+				lastFocused = document.activeElement;
+				modal.classList.add('is-open');
+				modal.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+				const first = modal.querySelector('input');
+				first && first.focus();
+				document.addEventListener('keydown', onKeydown);
+			}
+			function closeModal() {
+				modal.classList.remove('is-open');
+				modal.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+				lastFocused && lastFocused.focus();
+				document.removeEventListener('keydown', onKeydown);
+			}
+			function onKeydown(e) {
+				if (e.key === 'Escape') closeModal();
+				if (e.key === 'Tab') trapFocus(e);
+			}
+			function trapFocus(e) {
+				const focusables = modal.querySelectorAll(focusableSelectors);
+				if (!focusables.length) return;
+				const first = focusables[0], last = focusables[focusables.length - 1];
+				if (e.shiftKey && document.activeElement === first) {
+					e.preventDefault();
+					last.focus();
+				} else if (!e.shiftKey && document.activeElement === last) {
+					e.preventDefault();
+					first.focus();
+				}
+			}
+			function showMessage(txt, ok = true) {
+				message.textContent = txt;
+				message.style.color = ok ? 'var(--pekka-accent)' : '#ff6b6b';
+			}
+			function clearMessage() {
+				message.textContent = '';
+			}
+			function showSignupForm() {
+				clearMessage();
+				loginForm.classList.add('hidden');
+				signupForm.classList.remove('hidden');
+				// set modal to signup mode and update heading
+				modal.classList.add('is-signup');
+				document.getElementById('loginTitle').textContent = 'Sign up';
+				signupForm.querySelector('input').focus();
+			}
+			function showLoginForm() {
+				clearMessage();
+				signupForm.classList.add('hidden');
+				loginForm.classList.remove('hidden');
+				// remove signup mode and restore heading
+				modal.classList.remove('is-signup');
+				document.getElementById('loginTitle').textContent = 'Login';
+				loginForm.querySelector('input').focus();
+			}
+
+			// wire up the in-modal switches
+			showSignup && showSignup.addEventListener('click', showSignupForm);
+			showLogin && showLogin.addEventListener('click', showLoginForm);
+
+			items.forEach(li => {
+				li.addEventListener('keydown', e => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						li.click();
+					}
+				});
+				li.addEventListener('click', () => {
+					const action = li.dataset.action;
+					if (action === 'contacts') {
+						location.hash = '#contact';
+					} else if (action === 'category') {
+						location.hash = '#description';
+					} else if (action === 'login') {
+						// always show login mode when Login is clicked
+						showLoginForm();
+						openModal();
+					} else if (action === 'signup') {
+						showSignupForm();
+						openModal();
+					}
+				});
+			});
+
+			// close on elements with data-close (overlay, cancel, close button)
+			document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => closeModal()));
+
+			// submit login
+			loginForm.addEventListener('submit', async e => {
+				e.preventDefault();
+				clearMessage();
+				const fd = new FormData(loginForm);
+				const res = await fetch('auth.php?action=login', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+				const json = await res.json().catch(() => ({ success: false, message: 'Server error' }));
+				showMessage(json.message || (json.success ? 'Signed in' : 'Login failed'), !!json.success);
+				if (json.success) setTimeout(() => closeModal(), 900);
+			});
+
+			// submit signup
+			signupForm.addEventListener('submit', async e => {
+				e.preventDefault();
+				clearMessage();
+				const form = e.target;
+				const pw = form.password.value, pw2 = form.password2.value;
+				if (pw !== pw2) return showMessage('Passwords do not match', false);
+				const fd = new FormData(signupForm);
+				const res = await fetch('auth.php?action=signup', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+				const json = await res.json().catch(() => ({ success: false, message: 'Server error' }));
+				showMessage(json.message || (json.success ? 'Account created' : 'Signup failed'), !!json.success);
+				if (json.success) setTimeout(() => { showLoginForm(); }, 900);
+			});
+		})();
+	</script>
+
+	<div id="container3D"></div>
+	<script type="module" src="./app.js"></script>
+</body>
+
+</html>
