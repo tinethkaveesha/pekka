@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync - Your Intelligent Study Companion</title>
+    <link rel="icon" href="/public/Logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&display=swap");
+        
+        * {
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-slide-up { animation: slideUp 0.6s ease-out; }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="min-h-screen bg-white" style="background-image: linear-gradient(to bottom, hsl(30 25% 96% / 0.85), hsl(30 25% 96% / 0.9))">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+        <div class="container mx-auto flex h-16 items-center justify-between px-4">
+            <a href="/studysync.html" class="flex items-center gap-2">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-0">
+                    <img src="/public/Logo.png" alt="logo">
+                </div>
+                <span class="text-xl font-bold text-gray-900">StudySync</span>
+            </a>
+
+            <nav class="hidden items-center gap-6 md:flex text-sm">
+                <a href="/studysync.html" class="nav-link font-medium text-gray-900 hover:text-amber-700 transition-colors">Dashboard</a>
+                <a href="/src/pages/scheduler.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Scheduler</a>
+                <a href="/src/pages/resource-curator.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Resources</a>
+                <a href="/src/pages/progress-tracker.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Progress</a>
+                <a href="/src/pages/analytics.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Analytics</a>
+                <a href="/src/pages/quiz-generator.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Quizzes</a>
+                <a href="/src/pages/study-groups.html" class="nav-link font-medium text-gray-600 hover:text-amber-700 transition-colors">Groups</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="notification-btn" class="hidden md:flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 relative">
+                    <span class="text-lg">🔔</span>
+                </button>
+                <button id="profile-btn" class="hidden md:flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100">
+                    <span class="text-lg">👤</span>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100">
+                    <span class="text-lg">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="/studysync.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-900 font-medium">Dashboard</a>
+                <a href="/src/pages/scheduler.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Scheduler</a>
+                <a href="/src/pages/resource-curator.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Resources</a>
+                <a href="/src/pages/progress-tracker.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Progress</a>
+                <a href="/src/pages/analytics.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Analytics</a>
+                <a href="/src/pages/quiz-generator.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Quizzes</a>
+                <a href="/src/pages/study-groups.html" class="block py-2 px-4 rounded hover:bg-gray-50 text-gray-600">Groups</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid items-center gap-8 md:gap-12 lg:grid-cols-2">
+                    <div class="space-y-6 animate-slide-up order-2 md:order-1">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5">
+                            <span class="text-lg">✨</span>
+                            <span class="text-sm font-medium text-amber-700">E-learning</span>
+                        </div>
+                        
+                        <h1 class="text-4xl font-bold leading-tight tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+                            Study Smarter,
+                            <span class="block bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent">
+                                Achieve More
+                            </span>
+                        </h1>
+                        
+                        <p class="max-w-lg text-lg text-gray-600">
+                            Your intelligent study companion that creates personalized plans, curates resources, and tracks your progress — all in one place.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <button class="rounded-xl bg-amber-700 px-8 py-3 font-semibold text-white transition-all hover:bg-amber-800 hover:shadow-lg">
+                                Get Started Free →
+                            </button>
+                            <button class="rounded-xl border-2 border-amber-700 bg-transparent px-8 py-3 font-semibold text-amber-700 transition-all hover:bg-amber-50">
+                                Watch Demo
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center gap-6 pt-4">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-gray-900">50K+</p>
+                                <p class="text-sm text-gray-600">Students</p>
+                            </div>
+                            <div class="h-10 w-px bg-gray-200"></div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-gray-900">10K+</p>
+                                <p class="text-sm text-gray-600">Resources</p>
+                            </div>
+                            <div class="h-10 w-px bg-gray-200"></div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-gray-900">98%</p>
+                                <p class="text-sm text-gray-600">Success Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative animate-fade-in order-1 md:order-2">
+                        <div class="relative overflow-hidden rounded-3xl shadow-2xl">
+                            <img 
+                                src="/src/assets/hero-study.png"
+                                alt="Study workspace with books and laptop"
+                                class="h-auto w-full object-cover"
+                            />
+                        </div>
+                        <!-- Floating elements -->
+                        <div class="absolute -left-4 top-1/4 animate-float rounded-xl bg-white p-4 shadow-lg border border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center text-lg">
+                                    🔥
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">7 Day Streak!</p>
+                                    <p class="text-xs text-gray-600">Keep it up</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -right-4 bottom-1/4 animate-float rounded-xl bg-white p-4 shadow-lg border border-gray-100" style="animation-delay: 1s;">
+                            <div class="flex items-center gap-3">
+                                <div class="h-10 w-10 rounded-lg bg-amber-100 flex items-center justify-center text-lg">
+                                    📖
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-900">12 Topics</p>
+                                    <p class="text-xs text-gray-600">Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="mx-auto mb-16 max-w-3xl text-center">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold mb-4">Features</span>
+                    <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-5xl">
+                        Everything You Need to Excel
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Powerful features designed to boost your productivity and make learning enjoyable.
+                    </p>
+                </div>
+                
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <a href="/src/pages/scheduler.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-amber-100 flex items-center justify-center text-3xl group-hover:bg-amber-700 group-hover:text-white transition-colors">📅</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Smart Scheduler</h3>
+                        <p class="text-gray-600 leading-relaxed">Input your subjects, deadlines, and availability. Our AI generates optimized study plans tailored to your learning style.</p>
+                    </a>
+
+                    <!-- Feature 2 -->
+                    <a href="/src/pages/resource-curator.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-orange-100 flex items-center justify-center text-3xl group-hover:bg-orange-600 group-hover:text-white transition-colors">📚</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Resource Curator</h3>
+                        <p class="text-gray-600 leading-relaxed">Get AI-powered suggestions for videos, articles, and quizzes based on your selected topics and difficulty level.</p>
+                    </a>
+
+                    <!-- Feature 3 -->
+                    <a href="/src/pages/progress-tracker.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-red-100 flex items-center justify-center text-3xl group-hover:bg-red-600 group-hover:text-white transition-colors">🎯</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Progress Tracker</h3>
+                        <p class="text-gray-600 leading-relaxed">Visual dashboard showing completed tasks, study streaks, and performance insights to keep you motivated.</p>
+                    </a>
+
+                    <!-- Feature 4 -->
+                    <a href="/src/pages/quiz-generator.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-yellow-100 flex items-center justify-center text-3xl group-hover:bg-yellow-600 group-hover:text-white transition-colors">🧠</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Quiz Generator</h3>
+                        <p class="text-gray-600 leading-relaxed">Built-in quiz engine that tests your knowledge on any topic with adaptive difficulty adjustment.</p>
+                    </a>
+
+                    <!-- Feature 5 -->
+                    <a href="/src/pages/study-groups.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-purple-100 flex items-center justify-center text-3xl group-hover:bg-purple-600 group-hover:text-white transition-colors">👥</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Study Groups</h3>
+                        <p class="text-gray-600 leading-relaxed">Form or join groups, share notes, and schedule collaborative study sessions with classmates.</p>
+                    </a>
+
+                    <!-- Feature 6 -->
+                    <a href="/src/pages/analytics.html" class="group rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-xl hover:border-amber-200 transition-all duration-300 cursor-pointer">
+                        <div class="mb-6 h-14 w-14 rounded-xl bg-green-100 flex items-center justify-center text-3xl group-hover:bg-green-600 group-hover:text-white transition-colors">📊</div>
+                        <h3 class="mb-3 text-xl font-semibold text-gray-900">Analytics</h3>
+                        <p class="text-gray-600 leading-relaxed">Detailed analytics and insights to help you understand your learning patterns and improve performance.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview Section -->
+        <section class="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="mx-auto mb-16 max-w-3xl text-center">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold mb-4">Dashboard</span>
+                    <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-5xl">
+                        Your Personal Study Dashboard
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Track your progress, manage your schedule, and stay motivated with our intuitive dashboard.
+                    </p>
+                </div>
+                
+                <!-- Progress Dashboard -->
+                <div class="rounded-3xl border border-gray-200 bg-white p-8 mb-8 overflow-x-auto shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8">Weekly Progress</h3>
+                    <div class="flex gap-6 min-w-full" id="weekly-progress-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <!-- Quick Stats -->
+                    <div class="rounded-3xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <span class="text-2xl">⚡</span> Quick Actions
+                        </h3>
+                        <div class="space-y-3">
+                            <a href="/src/pages/scheduler.html" class="w-full px-4 py-3 rounded-xl bg-amber-700 text-white font-semibold hover:bg-amber-800 transition-all hover:shadow-md inline-block text-center">
+                                ➕ Add Study Session
+                            </a>
+                            <a href="/src/pages/quiz-generator.html" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 font-semibold hover:bg-gray-50 transition-all hover:border-amber-200 inline-block text-center">
+                                📝 Create Quiz
+                            </a>
+                            <a href="/src/pages/study-groups.html" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 font-semibold hover:bg-gray-50 transition-all hover:border-amber-200 inline-block text-center">
+                                👥 Join Study Group
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Widget -->
+                    <div class="lg:col-span-2 rounded-3xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-shadow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <span class="text-2xl">📅</span> Today's Schedule
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between rounded-xl border border-green-200 bg-green-50 p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-4">
+                                    <input type="checkbox" checked class="w-5 h-5 text-green-600 cursor-pointer rounded">
+                                    <div>
+                                        <p class="font-semibold text-gray-900">Mathematics</p>
+                                        <p class="text-sm text-gray-600 flex items-center gap-2">🕐 09:00 - 11:00 <span class="text-gray-400">•</span> 2 hours</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-lg">✓ Done</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50 p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-4">
+                                    <input type="checkbox" class="w-5 h-5 text-amber-700 cursor-pointer rounded">
+                                    <div>
+                                        <p class="font-semibold text-gray-900">Physics</p>
+                                        <p class="text-sm text-gray-600 flex items-center gap-2">🕐 11:30 - 13:00 <span class="text-gray-400">•</span> 1.5 hours</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-amber-600 bg-amber-100 px-3 py-1 rounded-lg">⏱️ In Progress</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-gray-200 bg-white p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-4">
+                                    <input type="checkbox" class="w-5 h-5 text-gray-400 cursor-pointer rounded">
+                                    <div>
+                                        <p class="font-semibold text-gray-900">Chemistry</p>
+                                        <p class="text-sm text-gray-600 flex items-center gap-2">🕐 14:00 - 15:00 <span class="text-gray-400">•</span> 1 hour</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-lg">⏳ Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="rounded-3xl bg-gradient-to-br from-amber-700 via-orange-600 to-orange-700 p-8 text-center md:p-20 relative overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(45deg, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    <div class="relative z-10">
+                        <h2 class="mb-4 text-3xl font-bold text-white md:text-5xl leading-tight">
+                            Ready to Transform Your Study Habits?
+                        </h2>
+                        <p class="mx-auto mb-10 max-w-2xl text-lg text-white/95 leading-relaxed">
+                            Join thousands of students who are already studying smarter with StudySync. Start your free trial today and unlock your full potential.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button class="rounded-xl bg-white px-8 py-4 font-semibold text-amber-700 transition-all hover:shadow-lg hover:scale-105 inline-flex items-center gap-2">
+                                <span>🚀</span> Get Started Free
+                            </button>
+                            <button class="rounded-xl border-2 border-white/50 bg-transparent px-8 py-4 font-semibold text-white transition-all hover:bg-white/20 hover:border-white inline-flex items-center gap-2">
+                                📚 Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification Panel Modal -->
+    <div id="notification-panel" class="fixed right-0 top-16 h-screen w-80 bg-white border-l border-gray-200 shadow-2xl transform translate-x-full transition-transform duration-300 z-40 overflow-y-auto">
+        <div class="p-6 border-b border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900">Notifications</h2>
+        </div>
+        <div id="notification-list" class="divide-y divide-gray-100">
+            <!-- Notifications will be populated here by JavaScript -->
+        </div>
+        <div class="p-4 text-center border-t border-gray-200">
+            <button onclick="clearAllNotifications()" class="text-sm text-amber-700 hover:text-amber-800 font-medium">
+                Clear All
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal (Login/Register) -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 animate-slide-up">
+            <div class="text-center mb-8">
+                <h2 id="auth-title" class="text-2xl font-bold text-gray-900 mb-2">Welcome to StudySync</h2>
+                <p class="text-gray-600 text-sm">Sign in to continue learning</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input 
+                        type="email" 
+                        id="login-email" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="you@example.com"
+                    />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input 
+                        type="password" 
+                        id="login-password" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="••••••••"
+                    />
+                </div>
+                <button 
+                    type="submit"
+                    class="w-full py-2 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-all"
+                >
+                    Sign In
+                </button>
+            </form>
+
+            <!-- Register Form (hidden initially) -->
+            <form id="register-form" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="register-name" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="John Doe"
+                    />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input 
+                        type="email" 
+                        id="register-email" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="you@example.com"
+                    />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input 
+                        type="password" 
+                        id="register-password" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="••••••••"
+                    />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="register-confirm" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-700 focus:border-transparent"
+                        placeholder="••••••••"
+                    />
+                </div>
+                <button 
+                    type="submit"
+                    class="w-full py-2 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-all"
+                >
+                    Create Account
+                </button>
+            </form>
+
+            <!-- Toggle Form -->
+            <div class="mt-6 text-center text-sm text-gray-600">
+                <span id="toggle-text">Don't have an account?</span>
+                <button 
+                    type="button"
+                    id="toggle-form-btn"
+                    class="text-amber-700 hover:text-amber-800 font-medium ml-1"
+                >
+                    Sign up
+                </button>
+            </div>
+
+            <!-- Close Button -->
+            <button 
+                onclick="closeAuthModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Resource Modal -->
+    <div id="resource-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 animate-slide-up">
+            <h2 id="modal-resource-title" class="text-2xl font-bold text-gray-900 mb-4">Resource Title</h2>
+            
+            <div class="space-y-4 mb-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600">Type</span>
+                    <span id="modal-resource-type" class="font-semibold text-gray-900">Video</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600">Subject</span>
+                    <span id="modal-resource-subject" class="font-semibold text-gray-900">Mathematics</span>
+                </div>
+            </div>
+
+            <button 
+                id="modal-download-btn"
+                href="#"
+                class="w-full py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-all mb-4"
+            >
+                📥 Download
+            </button>
+
+            <button 
+                onclick="closeResourceModal()"
+                class="w-full py-2 border border-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-all"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Group Modal -->
+    <div id="group-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 animate-slide-up">
+            <h2 id="modal-group-name" class="text-2xl font-bold text-gray-900 mb-2">Group Name</h2>
+            <p id="modal-group-subject" class="text-gray-600 mb-6">Subject</p>
+            
+            <div class="space-y-4 mb-6 bg-gray-50 p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600">Members</span>
+                    <span id="modal-group-members" class="font-semibold text-gray-900">0/0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-600">Next Session</span>
+                    <span id="modal-group-session" class="font-semibold text-gray-900">TBD</span>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <p class="text-sm text-gray-600 mb-3">Members</p>
+                <div id="modal-group-avatars" class="flex gap-2"></div>
+            </div>
+
+            <button 
+                id="modal-join-btn"
+                class="w-full py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-all mb-4"
+            >
+                Join Group
+            </button>
+
+            <button 
+                onclick="closeGroupModal()"
+                class="w-full py-2 border border-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-all"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 bg-gradient-to-b from-white to-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid gap-8 md:grid-cols-4 mb-8">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-0 to-orange-600 hover:shadow-lg transition-shadow">
+                            <img src="/public/Logo.png" alt="logo">
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">StudySync</span>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Your intelligent study companion for smarter learning and better results.
+                    </p>
+                    <div class="flex gap-2">
+                        <a href="#" class="rounded-lg p-2.5 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition-all duration-300">
+                            𝕏
+                        </a>
+                        <a href="#" class="rounded-lg p-2.5 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition-all duration-300">
+                            ⚙️
+                        </a>
+                        <a href="#" class="rounded-lg p-2.5 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition-all duration-300">
+                            🔗
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="mb-4 font-bold text-gray-900 text-sm uppercase tracking-wider">Product</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Features</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Resources</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="mb-4 font-bold text-gray-900 text-sm uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="mb-4 font-bold text-gray-900 text-sm uppercase tracking-wider">Legal</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Privacy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Terms</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-amber-700 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-200">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <p class="text-sm text-gray-600">© 2026 StudySync. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0 text-sm text-gray-600">
+                        <a href="#" class="hover:text-amber-700 transition-colors">Sitemap</a>
+                        <a href="#" class="hover:text-amber-700 transition-colors">Security</a>
+                        <a href="#" class="hover:text-amber-700 transition-colors">Status</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="studysync.js"></script>
+</body>
+</html>

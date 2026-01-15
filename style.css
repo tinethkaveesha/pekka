@@ -163,6 +163,10 @@ header .content-fit nav ul{
     padding-block: 0.5em;
     border-bottom: 1px dashed #1A237E66;
 }
+#link {
+    padding-block: 0.5em;
+    border-bottom: 1px dashed #1A237E66;
+}
 #contact table td:nth-child(1) {
     text-align: left;
     font-weight: 500;
